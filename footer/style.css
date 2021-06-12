@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
+[v-cloak] {
+  display: block;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  height: 100vh;
+  position: relative;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: rgb(65, 5, 5);
+  padding: 5%;
+}
+p {
+  text-align: center;
+  line-height: 1.5;
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  footer {
+    padding: 3%;
+  }
+}

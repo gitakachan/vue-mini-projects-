@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <footer v-clock>
+      <!-- 修改自https://www.disclaimertemplate.com/free-website-copyright-notice/ -->
+      <p>Copyright © {{company}} {{year}} All Rights Reserved</p>
+      <p>
+        All files and information contained in this Website are copyright by
+        {{company}}, and may not be duplicated, copied, modified or adapted, in
+        any way without our written permission. <br />
+        Our Content, as found within our Website and Services, is protected
+        under United States and foreign copyrights. The copying, redistribution,
+        use or publication by you of any such Content, is strictly prohibited.
+        Your use of our Website and Services does not grant you any ownership
+        rights to our Content.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+      (function () {
+        var app = new Vue({
+          el: "footer",
+          data: {
+            company: "Elio's Kitchen",
+            year: new Date().getFullYear(),
+          },
+        });
+      })();
+    </script>
+  </body>
+</html>
