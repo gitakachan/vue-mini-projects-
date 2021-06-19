@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>剩餘庫存：{{inStock}}</p>
+      <div class="count">
+        <button @click="reduceBuy">-</button>
+        <p id="buy">{{buy}}</p>
+        <button @click="addBuy">+</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          inStock: 10,
+          buy: 1,
+        },
+        methods: {
+          addBuy: function () {
+            if (this.buy >= this.inStock) {
+              alert("購買數超出庫存");
+              return;
+            } else {
+              this.buy += 1;
+            }
+          },
+          reduceBuy: function () {
+            if (this.buy <= 0) {
+              alert("購買數不可小於0");
+              return;
+            } else {
+              this.buy -= 1;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

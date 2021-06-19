@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  margin-top: 60px;
+}
+
+.count {
+  width: 150px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.6rem;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+#buy {
+  width: 50%;
+}
+button {
+  width: 25%;
+  height: 100%;
+  border: none;
+  background-color: pink;
+}
