@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="imgs">
+        <div class="img">
+          <img :src="imgArr[idx]" alt="" />
+        </div>
+        <div class="btns">
+          <button @click="prev" :disabled="prevDisabled">&lt;</button>
+          <button @click="next" :disabled="nextDisabled">&gt;</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+      //img:5
+
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          idx: 0,
+          imgArr: [
+            "https://images.unsplash.com/photo-1528161498624-89b0174b714d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80",
+            "https://images.unsplash.com/photo-1624031031143-7a084c514946?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1562&q=80",
+            "https://images.unsplash.com/photo-1624038465282-21d9f5384a7b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+            "https://images.unsplash.com/photo-1624248257012-665ee4c5e3c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+            "https://images.unsplash.com/photo-1624125278758-c0572f6ebc55?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+          ],
+        },
+        computed: {
+          prevDisabled: function () {
+            if (this.idx == 0) {
+              return true;
+            }
+          },
+          nextDisabled: function () {
+            if (this.idx == this.imgArr.length - 1) {
+              return true;
+            }
+          },
+        },
+
+        methods: {
+          prev: function () {
+            this.idx--;
+            console.log(this.idx);
+          },
+          next: function () {
+            this.idx++;
+            console.log(this.idx);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
