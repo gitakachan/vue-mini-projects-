@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <div class="search">
+        <label for="city">search city:</label>
+        <input type="text" id="city" v-model="city" @keyup.enter="getWeather" />
+        <button @click="getWeather">get weather</button>
+      </div>
+      <div class="result" v-show="showResult">
+        <ul v-for="item in weathers">
+          <li>Time: {{setTime(item.dt_txt)}}</li>
+          <!-- &#8451; 度Ｃ -->
+          <li>Temperature: {{setTemp(item.main.temp)}}&#8451;</li>
+          <li>Weather: {{item.weather[0].main}}</li>
+          <li>Description: {{item.weather[0].description}}</li>
+          <li>
+            <img :src="iconImg(item.weather[0].icon)" alt="weather icon" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          title: "5 day weather forecast",
+          showResult: false,
+          weathers: null,
+          city: "",
+        },
+
+        methods: {
+          getWeather: function () {
+            //axios回調函數中的this會改變，導致無法訪問到data中的數據，所以需先保存原本的this指向
+            let _this = this;
+            axios
+              .get(
+                `http://api.openweathermap.org/data/2.5/forecast?q=${_this.city}&units=metric&appid=aa74df8f567d15fd7b70a8783a5103b4`
+              )
+              .then(
+                (response) => {
+                  //   console.log(response);
+                  _this.weathers = response.data.list;
+                  _this.showResult = true;
+                },
+                (error) => {
+                  alert("city is not found!");
+                }
+              );
+          },
+          iconImg: function (icon) {
+            return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+          },
+          setTime: function (time) {
+            // 2021-07-08 12:00:00
+            let _date = time.slice(5, 10);
+            let _time = time.slice(11, 16);
+            let newTime = _date + " " + _time;
+            return newTime;
+          },
+          setTemp: function (temp) {
+            let newTemp = temp.toFixed(1);
+            return newTemp;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
