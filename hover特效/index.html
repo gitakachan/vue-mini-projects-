@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <ul>
+        <li
+          v-for="(m,idx) in movies"
+          @mouseover="hover(idx)"
+          :class="{active: idx === currentActive}"
+        >
+          {{m}}
+        </li>
+      </ul>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          movies: ["Life of Pi", "Avengers", "Avatar", "Spider Man", "Mulan"],
+          currentActive: 0,
+        },
+        methods: {
+          hover: function (idx) {
+            this.currentActive = idx;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
