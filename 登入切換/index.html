@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <form action="" @submit.prevent="login">
+        <label for="username">{{labelTitle}}</label>
+        <input :type="inputType" id="username" required v-model="username" />
+        <button @click.stop.prevent="switchLogin">{{button}}</button>
+        <button>login</button>
+      </form>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          labelTitle: "帳號：",
+          button: "信箱登入",
+          inputType: "text",
+          username: "",
+        },
+        methods: {
+          switchLogin() {
+            if (this.labelTitle === "帳號：") {
+              this.labelTitle = "信箱：";
+              this.button = "帳號登入";
+              this.inputType = "email";
+            } else {
+              this.labelTitle = "帳號：";
+              this.button = "信箱登入";
+              this.inputType = "text";
+            }
+          },
+          login() {
+            console.log(this.username);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
