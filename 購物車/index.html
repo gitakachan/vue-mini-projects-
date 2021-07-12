@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="cart">
+        <h1>購物車</h1>
+        <div class="empty" v-if="cart.length==0">購物車為空</div>
+        <div class="notEmpty" v-else>
+          <table>
+            <caption class="total">
+              總價：{{totalPrice}} 元
+            </caption>
+            <tr>
+              <th></th>
+              <th>商品</th>
+              <th>價格</th>
+              <th>數量</th>
+              <th>操作</th>
+            </tr>
+            <tr v-for="(item, idx) in cart">
+              <td>{{idx+1}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price*item.num}}</td>
+              <td>
+                <button @click="decrease(idx,item.num)" :disabled="item.num==1">
+                  -
+                </button>
+                {{item.num}}
+                <button @click="increase(idx,item.num)">+</button>
+              </td>
+              <td><button @click="remove(idx)">刪除</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
