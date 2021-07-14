@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- 單選對應boolean -->
+      <section class="single">
+        <input type="checkbox" name="agree" id="agree" v-model="agreement" />
+        <label for="agree">同意協議</label>
+        <br />
+        <input type="checkbox" name="subs" id="subs" v-model="subscribe" />
+        <label for="subs">訂閱電子報</label>
+        <br />
+        <button :disabled="!agreement">下一步</button>
+      </section>
+      <br />
+      <!-- 多選(具有群組意義)對應陣列 -->
+      <section class="group">
+        <input
+          type="checkbox"
+          name="basketball"
+          id="basketball"
+          value="basketball"
+          v-model="sports"
+        />
+        <label for="basketball">籃球</label>
+
+        <input
+          type="checkbox"
+          name="soccer"
+          id="soccer"
+          value="soccer"
+          v-model="sports"
+        />
+        <label for="soccer">足球</label>
+
+        <input
+          type="checkbox"
+          name="tabletennis"
+          id="tabletennis"
+          value="tabletennis"
+          v-model="sports"
+        />
+        <label for="tabletennis">桌球</label>
+
+        <input
+          type="checkbox"
+          name="badminton"
+          id="badminton"
+          value="badminton"
+          v-model="sports"
+        />
+        <label for="badminton">羽球</label>
+        <p>selected:{{sports}}</p>
+      </section>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          agreement: false,
+          subscribe: true,
+          sports: [],
+        },
+      });
+    </script>
+  </body>
+</html>

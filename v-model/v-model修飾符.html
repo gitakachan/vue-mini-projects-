@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修飾符</title>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- lazy -->
+      <h3>lazy</h3>
+      <input type="text" v-model.lazy="message" />
+      <p>{{message}}</p>
+
+      <!-- number 轉換string成number-->
+      <!-- v-model綁定的資料預設是string （即使type設置為number） -->
+      <h3>number</h3>
+      <input type="number" v-model.number="num" />
+      <p>{{num}} - {{typeof num}}</p>
+
+      <!-- trim 自动過濾首尾空白字符 -->
+      <h3>trim</h3>
+      <input type="text" v-model.trim="trim" />
+      <p>trimed:{{trim}}</p>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          message: "hello",
+          num: 0,
+          trim: "",
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

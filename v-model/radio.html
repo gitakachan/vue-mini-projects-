@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- M (male), F (female) or X (Indeterminate/Intersex/Unspecified) -->
+      <label for="male">M</label>
+      <input type="radio" name="gender" value="m" id="male" v-model="gender" />
+      <label for="female">F</label>
+      <input
+        type="radio"
+        name="gender"
+        value="f"
+        id="female"
+        v-model="gender"
+      />
+      <label for="x">X</label>
+      <input type="radio" name="gender" value="x" id="x" v-model="gender" />
+      <p>{{gender}}</p>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          gender: "m",
+        //   V-model會忽略所有表單元素的value、checked、selected的初始值，要在data中聲明初始值才能做出checked
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
