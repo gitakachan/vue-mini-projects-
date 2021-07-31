@@ -6,10 +6,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
 body {
-  background-color: rgb(214, 184, 170);
+  background-color: #cda34f;
   display: flex;
   justify-content: center;
   font-family: "Quicksand", sans-serif;
+  font-weight: lighter;
 }
 
 #app {
@@ -18,10 +19,11 @@ body {
   justify-content: center;
   flex-direction: column;
   padding-top: 50px;
-  max-width: 1040px;
+  max-width: 1400px;
 }
 h1 {
   margin-bottom: 10px;
+  font-weight: lighter;
 }
 
 .search {
@@ -32,6 +34,7 @@ input {
   padding: 5px 10px;
   margin: 0 5px;
   outline: none;
+  border: none;
 }
 
 button {
@@ -49,15 +52,35 @@ button:hover {
 .result {
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff;
   padding: 20px;
   margin-top: 20px;
   justify-content: center;
 }
 
 ul {
-  width: 200px;
+  width: 220px;
   padding: 10px;
   margin: 10px;
-  background-color: rgb(238, 214, 245);
+  background-color: #e9e7da;
+}
+
+.main {
+  /* background-color: #ccc; */
+  display: flex;
+  align-items: center;
+}
+
+.main img {
+  width: 50%;
+}
+
+.main span {
+  width: 40%;
+  display: block;
+  font-size: 30px;
+  /* background-color: #fa0; */
+}
+
+li {
+  text-align: center;
 }

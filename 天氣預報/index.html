@@ -19,11 +19,16 @@
         <ul v-for="item in weathers">
           <li>Time: {{setTime(item.dt_txt)}}</li>
           <!-- &#8451; 度Ｃ -->
-          <li>Temperature: {{setTemp(item.main.temp)}}&#8451;</li>
-          <li>Weather: {{item.weather[0].main}}</li>
-          <li>Description: {{item.weather[0].description}}</li>
-          <li>
+          <!-- <li>{{setTemp(item.main.temp)}}&#8451;</li> -->
+
+          <li class="main">
             <img :src="iconImg(item.weather[0].icon)" alt="weather icon" />
+            <span>{{setTemp(item.main.temp)}}&#8451;</span>
+          </li>
+
+          <li class="description">
+            <span>{{item.weather[0].main}}: </span>
+            <span>{{item.weather[0].description}}</span>
           </li>
         </ul>
       </div>
@@ -48,7 +53,7 @@
             let _this = this;
             axios
               .get(
-                `https://api.openweathermap.org/data/2.5/forecast?q=${_this.city}&units=metric&appid=aa74df8f567d15fd7b70a8783a5103b4`
+                `http://api.openweathermap.org/data/2.5/forecast?q=${_this.city}&units=metric&appid=aa74df8f567d15fd7b70a8783a5103b4`
               )
               .then(
                 (response) => {
@@ -62,7 +67,7 @@
               );
           },
           iconImg: function (icon) {
-            return "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+            return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
           },
           setTime: function (time) {
             // 2021-07-08 12:00:00
