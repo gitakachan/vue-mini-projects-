@@ -48,7 +48,7 @@
             let _this = this;
             axios
               .get(
-                `http://api.openweathermap.org/data/2.5/forecast?q=${_this.city}&units=metric&appid=aa74df8f567d15fd7b70a8783a5103b4`
+                `https://api.openweathermap.org/data/2.5/forecast?q=${_this.city}&units=metric&appid=aa74df8f567d15fd7b70a8783a5103b4`
               )
               .then(
                 (response) => {
@@ -62,7 +62,7 @@
               );
           },
           iconImg: function (icon) {
-            return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            return "https://openweathermap.org/img/wn/" + icon + "@2x.png";
           },
           setTime: function (time) {
             // 2021-07-08 12:00:00
