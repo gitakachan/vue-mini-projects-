@@ -13,8 +13,8 @@
 |  08 | 登入切換 | [demo](https://gitakachan.github.io/vue-mini-projects-/登入切換)  |
 |  09 | 購物車  | [demo](https://gitakachan.github.io/vue-mini-projects-/購物車)  |
 |  10 | 選項卡  | [demo](https://gitakachan.github.io/vue-mini-projects-/選項卡)  |
+|  11 | 列表過濾  | [demo](https://gitakachan.github.io/vue-mini-projects-/列表過濾)  |
 
- 
 
 
 
