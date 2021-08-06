@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <h1>搜尋人員名單</h1>
+      <label for="name">輸入姓名：</label>
+      <input type="text" id="name" v-model="search" />
+      <button @click="sortType=2">年齡小到大</button>
+      <button @click="sortType=1">年齡大到小</button>
+      <button @click="sortType=0">按原順序</button>
+      <ul>
+        <li v-for="item in fillPersons" ::key="item.id">
+          編號： {{item.id}} | 姓名：{{item.name}} | 年齡：{{item.age}} |
+          性別：{{item.gender}}
+        </li>
+      </ul>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"
+      integrity="sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          search: "",
+          persons: [
+            { id: 001, name: "馬冬梅", age: 30, gender: "f" },
+            { id: 002, name: "周冬雨", age: 24, gender: "f" },
+            { id: 003, name: "周杰倫", age: 41, gender: "m" },
+            { id: 004, name: "溫兆倫", age: 28, gender: "m" },
+          ],
+          //fillPersons: [],
+          sortType: 0, //0代表按原順序排列 1代表年齡大到小 2代表年齡小到大
+        },
+        computed: {
+          fillPersons() {
+            const arr = this.persons.filter((p) => {
+              return p.name.indexOf(this.search) !== -1;
+            });
+            //判斷是否需要排序
+            if (this.sortType !== 0) {
+              //後減前：大到小，前減後：小到大
+              arr.sort((a, b) => {
+                return this.sortType === 1 ? b.age - a.age : a.age - b.age;
+              });
+            }
+            return arr;
+          },
+        },
+
+        //也可以用watch去監視搜索內容的變化，再用回傳的新陣列fillPersons渲染列表，但比較麻煩
+        // watch: {
+        //   search: {
+        //     immediate: true,
+        //     handler(val) {
+        //       //console.log(val);
+        //       this.fillPersons = this.persons.filter((p) => {
+        //         return p.name.indexOf(val) !== -1;
+        //       });
+        //     },
+        //   },
+        // },
+      });
+    </script>
+  </body>
+</html>
